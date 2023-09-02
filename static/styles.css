@@ -35,21 +35,15 @@ form {
     padding: 16px;
   }
   
-  /* The "Forgot password" text */
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
   
-  /* Change styles for span and cancel button on extra small screens */
+  
+  /* Change styles for span */
   @media screen and (max-width: 300px) {
     span.psw {
       display: block;
       float: none;
     }
-    .cancelbtn {
-      width: 100%;
-    }
+    
   }
 
   * {box-sizing: border-box}
@@ -112,3 +106,27 @@ a {
     display: inline-block;
     margin-right: 10px; /* Add spacing between the inputs */
 }
+
+.text-center {
+  text-align: center;
+}
+
+.url-input {
+  text-align: center;
+  margin-bottom: 10px; /* Optional: Add some spacing between the input fields */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.url-input {
+    text-align: center;
+    margin-bottom: 10px; /* Optional: Add some spacing between the input fields */
+}
+
+
+
+
+
+

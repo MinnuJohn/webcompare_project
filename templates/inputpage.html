@@ -6,20 +6,22 @@
 {% endblock%}
 
 {% block body %}
-<h1>Check similarity between two webpages</h1>
-<form>
-    <div class="url-input">
-        <label for="url1">Enter URL 1:</label>
-        <input type="text" id="url1" name="url1" placeholder="https://example1.com">
-    </div>
+<div class="text-center"> <!-- Center-align the content -->
+    <h1>Check similarity between two webpages</h1>
+    <form>
+        <div class="url-input">
+            <label for="url1">Enter URL 1:</label>
+            <input type="text" id="url1" name="url1" placeholder="https://example1.com">
+        </div>
 
-    <div class="url-input">
-        <label for="url2">Enter URL 2:</label>
-        <input type="text" id="url2" name="url2" placeholder="https://example2.com">
-    </div>
+        <div class="url-input">
+            <label for="url2">Enter URL 2:</label>
+            <input type="text" id="url2" name="url2" placeholder="https://example2.com">
+        </div>
 
-    <input type="submit" value="Submit">
-</form>
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 
 {% endblock %}
