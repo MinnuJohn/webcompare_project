@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=!, initial-scale=1.0">
-    {% block head%}{% endblock%}
+    {% block head%}{% endblock%}{% for msg in get_flashed_messages() %}
+    {{ msg }}
+    
+    {% endfor %}
 </head>
 <body>
     <link rel="stylesheet" href="/static/styles.css">
