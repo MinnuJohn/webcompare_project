@@ -6,7 +6,8 @@
 
 {% block body %}
 <h1>register page</h1>
-<form action="/users" method="POST">
+
+<form action="/users" method="POST" onsubmit="return checkPasswordMatch();">
     <div class="container">
       <h1>Register</h1>
       <p>Please fill in this form to create an account.</p>
@@ -28,4 +29,6 @@
   
   </form>
 <a href="{{url_for('login')}}">Already have account login</a><br>
+<script src="/static/js/webscraping.js"></script>
+
 {% endblock %}
