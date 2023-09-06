@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User,connect_to_db
+from model import db, User,UrlInfo,UserInput,WebScrapedInfo,connect_to_db
 
 def create_user(username, password):
     """Create and return a new user."""
@@ -26,6 +26,38 @@ def get_user_by_username(username):
     """Return a user by username."""
 
     return User.query.filter(User.username == username).first()
+
+def create_user_input(user, user_id,urlinfo_id):
+    """Create and return a new user_input."""
+
+    user_input = UserInput(user=user, user_id=user_id,urlinfo_id =urlinfo_id)
+
+    return user_input
+
+def get_user_input_by_user_id(user_id):
+    return UserInput.query.filter(UserInput.user_id == user_id).all()
+
+def get_user_input():
+    return UserInput.query.all()
+
+def get_info_by_info_id(url_info_id):
+    return UrlInfo.query.filter(UrlInfo.url_id == url_info_id)
+
+def insert_url_info(input1,input2,similarity):
+    urlinfo = UrlInfo(url_input1 = input1,url_input2 = input2,similarity = similarity)
+    return urlinfo
+
+def insert_userinput(user,url_info):
+    userinput= UserInput(user=user,url_info=url_info )
+
+    return userinput
+
+def insert_webscraping(url_link,data):
+    webscraping = WebScrapedInfo(url_link=url_link,url_data = data)
+
+    return webscraping
+
+
 
 if __name__ == '__main__':
     from server import app

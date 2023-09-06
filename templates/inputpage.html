@@ -8,7 +8,7 @@
 {% block body %}
 <div class="text-center"> <!-- Center-align the content -->
     <h1>Check similarity between two webpages</h1>
-    <form>
+    <form action="/processinput"  method="POST">
         <div class="url-input">
             <label for="url1">Enter URL 1:</label>
             <input type="text" id="url1" name="url1" placeholder="https://example1.com">
@@ -20,6 +20,30 @@
         </div>
 
         <input type="submit" value="Submit">
+    </form>
+</div>
+<div class="center-table">
+    <form>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>url1</th>
+                    <th>url2</th>
+                    <th>Similarity%</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for info in url_info %}
+                <tr>
+                    <td>{{ info.url_input1 }}</td>
+                    <td>{{ info.url_input1}}</td>
+                    <td>{{ info.similarity }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
     </form>
 </div>
 

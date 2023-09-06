@@ -44,6 +44,7 @@ class UrlInfo(db.Model):
     url_input2 = db.Column(db.String, db.ForeignKey("web_scraped_info.url_link"))
     similarity = db.Column(db.Integer)
 
+
     user_input = db.relationship("UserInput", back_populates="url_info")
     
 
