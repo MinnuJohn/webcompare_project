@@ -125,8 +125,26 @@ a {
     margin-bottom: 10px; /* Optional: Add some spacing between the input fields */
 }
 
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+}
 
+.center-table{
+  width: 50%;
+  margin: 0 auto; 
+}
 
+table {
+  width: 100%; /* Make the table span the full width of its container */
+  border-collapse: separate; /* Add cell spacing */
+  border-spacing: 10px; /* Adjust the cell spacing as needed */
+}
 
-
-
+th, td {
+  padding: 10px; /* Add cell padding */
+  font-size: 16px; /* Increase font size */
+}
