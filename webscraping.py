@@ -9,7 +9,7 @@ def tag_visible(element):
     if isinstance(element, Comment):
         return False
     return True
-url = "https://papersowl.com/examples/my-family-trip-to-miami/"
+
 def scrape(url):
     req = requests.get(url)
 

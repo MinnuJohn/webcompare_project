@@ -34,6 +34,8 @@ def create_user_input(user, user_id,urlinfo_id):
 
     return user_input
 
+
+
 def get_user_input_by_user_id(user_id):
     return UserInput.query.filter(UserInput.user_id == user_id).all()
 
@@ -43,9 +45,21 @@ def get_user_input():
 def get_info_by_info_id(url_info_id):
     return UrlInfo.query.filter(UrlInfo.url_id == url_info_id)
 
+def create_webscraped(url,data):
+    webscarped_info = WebScrapedInfo(url_link = url,url_data = data)
+    return webscarped_info
+
+def get_webscraped_by_url(input_url):
+    # Query the webscraped table for the input URL
+    return WebScrapedInfo.query.filter_by(url_link=input_url).first() 
+
+
+
 def insert_url_info(input1,input2,similarity):
     urlinfo = UrlInfo(url_input1 = input1,url_input2 = input2,similarity = similarity)
     return urlinfo
+
+
 
 def insert_userinput(user,url_info):
     userinput= UserInput(user=user,url_info=url_info )

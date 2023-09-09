@@ -34,6 +34,8 @@ class UserInput(db.Model):
     def __repr__(self):
         return f"<UserInput input_id={self.input_id} created_time={self.created_time}>"
 
+# ...
+
 class UrlInfo(db.Model):
     """URL information table."""
 
@@ -43,7 +45,6 @@ class UrlInfo(db.Model):
     url_input1 = db.Column(db.String, db.ForeignKey("web_scraped_info.url_link"))
     url_input2 = db.Column(db.String, db.ForeignKey("web_scraped_info.url_link"))
     similarity = db.Column(db.Integer)
-
 
     user_input = db.relationship("UserInput", back_populates="url_info")
     
@@ -59,8 +60,7 @@ class UrlInfo(db.Model):
 class WebScrapedInfo(db.Model):
     """Web scraped information table."""
 
-    __tablename__ = "web_scraped_info"
-
+    __tablename__ = "web_scraped_info"  
     url_link = db.Column(db.String, primary_key=True)
     url_data = db.Column(db.Text)
 
