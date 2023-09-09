@@ -2,6 +2,7 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect)
 from model import connect_to_db, db
 import crud
+from webscraping import scrape
 
 from jinja2 import StrictUndefined
 
@@ -45,12 +46,19 @@ def process_login():
 
 @app.route("/processinput", methods=["POST"])
 def process_input():
+    #Get urls 
     input1 = request.form.get("url1")
     input2 = request.form.get("url2")
+
+    #scrape urls
+    result1 = scrape(input1)
+    result2 = scrape(input2)
+
     similarity = 10
     
-    webscraping1 = crud.insert_webscraping(input1,"abs")
-    webscraping2 = crud.insert_webscraping(input2,"absds")
+    #insert url and content to webscraped table
+    webscraping1 = crud.insert_webscraping(input1,result1)
+    webscraping2 = crud.insert_webscraping(input2,result2)
     db.session.add(webscraping1)
     db.session.add(webscraping2)
     db.session.commit()
@@ -89,6 +97,7 @@ def register_user():
         flash("Account created! Please log in.")
 
     return render_template('login.html')
+    
 
 if __name__ == "__main__":
     connect_to_db(app)
