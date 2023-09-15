@@ -23,7 +23,7 @@
     </form>
 </div>
 <div class="center-table">
-    <form>
+
         <div class="table-container">
         <table>
             <thead>
@@ -31,7 +31,8 @@
                     <th>url1</th>
                     <th>url2</th>
                     <th>Similarity%</th>
-                </tr>
+                    <th>Action</th> 
+                                    </tr>
             </thead>
             <tbody>
                 {% for info in url_info %}
@@ -39,13 +40,18 @@
                     <td>{{ info.url_input1 }}</td>
                     <td>{{ info.url_input2}}</td>
                     <td>{{ info.similarity }}</td>
+                    <td>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="url_id" value="{{ info.url_id }}">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                    
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
         </div>
-    </form>
 </div>
-
-
+<!-- <script src="/static/js/webscraping.js"></script> -->
 {% endblock %}

@@ -34,7 +34,6 @@ class UserInput(db.Model):
     def __repr__(self):
         return f"<UserInput input_id={self.input_id} created_time={self.created_time}>"
 
-# ...
 
 class UrlInfo(db.Model):
     """URL information table."""

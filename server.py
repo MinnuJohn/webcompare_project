@@ -1,6 +1,6 @@
 from flask import (Flask, render_template, request, flash, session,
                    redirect)
-from model import connect_to_db, db
+from model import connect_to_db, db,UserInput,UrlInfo
 import crud
 from webscraping import scrape
 
@@ -20,20 +20,15 @@ def registerform():
     return render_template('register.html')
 
 
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["POST","GET"])
 def process_login():
     """Process user login."""
 
     username= request.form.get("uname")
     password = request.form.get("psw")
     
-    user = crud.get_user_by_username(username)  
-    user_input = crud.get_user_input_by_user_id(user.user_id)
-    url_info_list = []
-    for i in user_input:
-        url_info_list.append(i.url_info)
-
-
+    user = crud.get_user_by_username(username)
+    url_info_list=urlinfo_list(user)
 
     if not user or user.password != password:
         flash("The email or password you entered was incorrect.")
@@ -54,9 +49,6 @@ def process_input():
     existing_result1 = crud.get_webscraped_by_url(input1)
     existing_result2 = crud.get_webscraped_by_url(input2)
 
-    print("-----------")
-    print(input1)
-    print(input2)
     if existing_result1:
         result1 = existing_result1.url_data
     else:
@@ -66,9 +58,6 @@ def process_input():
         webscraping1 = crud.insert_webscraping(input1, result1)
         db.session.add(webscraping1)
 
-    print("-----------")
-    print(input1)
-    print(input2)
 
     if existing_result2:
         result2 = existing_result2.url_data
@@ -82,17 +71,11 @@ def process_input():
     db.session.commit()
 
     similarity = 10
-    print("-----------")
-    print(input1)
-    print(input2)
+    
 
     # Insert URL info and user input
     urlinfo = crud.insert_url_info(input1, input2, similarity)
     db.session.add(urlinfo)
-
-    print("-----------")
-    print(input1)
-    print(input2)
 
     username = session.get("username")
     user = crud.get_user_by_username(username)
@@ -100,10 +83,7 @@ def process_input():
     db.session.add(user_input)
     db.session.commit()
 
-    user_input = crud.get_user_input_by_user_id(user.user_id)
-    url_info_list = []
-    for i in user_input:
-        url_info_list.append(i.url_info)
+    url_info_list=urlinfo_list(user)
 
     return render_template('inputpage.html', url_info=url_info_list)
 
@@ -124,7 +104,28 @@ def register_user():
         flash("Account created! Please log in.")
 
     return render_template('login.html')
-    
+
+
+
+
+@app.route("/delete",methods=["POST"])
+def delete():
+    """delete a row"""
+    username = session.get("username")
+    user = crud.get_user_by_username(username)
+    url_info_id = request.form.get("url_id")
+    UserInput.query.filter_by(url_info_id=url_info_id).delete()
+    UrlInfo.query.filter_by(url_id=url_info_id).delete()
+    db.session.commit()
+    url_info_list = urlinfo_list(user)
+    return render_template('inputpage.html', url_info=url_info_list)
+
+def urlinfo_list(user):
+    user_input = crud.get_user_input_by_user_id(user.user_id)
+    url_info_list = []
+    for i in user_input:
+        url_info_list.append(i.url_info)
+    return url_info_list
 
 if __name__ == "__main__":
     connect_to_db(app)
