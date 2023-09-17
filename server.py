@@ -1,5 +1,5 @@
 from flask import (Flask, render_template, request, flash, session,
-                   redirect)
+                   redirect,url_for)
 from model import connect_to_db, db,UserInput,UrlInfo
 import crud
 from webscraping import scrape
@@ -18,6 +18,12 @@ def login():
 @app.route("/registerform")
 def registerform():
     return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    flash("You have been logged out.")
+    return redirect(url_for('login'))
 
 
 @app.route("/login", methods=["POST","GET"])

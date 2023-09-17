@@ -1,21 +1,21 @@
 /* Bordered form */
 form {
-    border: 3px solid #f1f1f1;
+    border: 3px solid  #a7aa04;
   }
   
   /* Full-width inputs */
-  input[type=text], input[type=password] {
+  /* input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
+  } */
   
   /* Set a style for all buttons */
   button {
-    background-color: #04AA6D;
+    background-color: #a7aa04;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -48,11 +48,6 @@ form {
 
   * {box-sizing: border-box}
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-}
-
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
@@ -76,7 +71,7 @@ hr {
 
 /* Set a style for the submit/register button */
 .registerbtn {
-  background-color: #04AA6D;
+  background-color:  #a7aa04;
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -130,13 +125,9 @@ table, th, td {
   border-collapse: collapse;
 }
 th, td {
-  background-color: #96D4D4;
+  background-color:  #a7aa04;
 }
 
-.center-table{
-  width: 50%;
-  margin: 0 auto; 
-}
 
 table {
   width: 100%; /* Make the table span the full width of its container */
@@ -148,3 +139,68 @@ th, td {
   padding: 10px; /* Add cell padding */
   font-size: 16px; /* Increase font size */
 }
+
+
+@media screen and (max-width: 768px) {
+  table {
+      width: 80%; /* Adjust the percentage as needed */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  table {
+      width: 60%; /* Adjust the percentage as needed */
+  }
+}
+
+table {
+  width: 100%;
+}
+
+
+.navbar {
+  background-color: #a7aa04;
+  color: white;
+  border-radius: 0px;
+}
+
+#ubermelon-logo,
+#ubermelon-logo:hover,
+.navbar-dark .navbar-brand {
+  color: #151515;
+}
+
+.navbar-nav > li > a,
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+section {
+  margin-top: 50px;
+}
+
+/*  First row  */
+
+#hero {
+  height: 400px;
+}
+
+#splash {
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+/* Features Row */
+
+.feature {
+  text-align: center;
+}
+
+/* Further Study */
+
+#modalLabel {
+  color: black;
+}
+
+
+
