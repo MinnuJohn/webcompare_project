@@ -3,7 +3,7 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db, db,UserInput,UrlInfo
 import crud
 from webscraping import scrape
-
+from cosine_similarity import compaire 
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
@@ -23,6 +23,25 @@ def login():
 def registerform():
     return render_template('register.html')
 
+@app.route("/users", methods=["POST"])
+def register_user():
+    """Create a new user."""
+
+    username = request.form.get("username")
+    password = request.form.get("psw")
+    user = crud.get_user_by_username(username)
+    if user:
+        flash("Cannot create an account with that email. Try again.")
+    else:
+        user = crud.create_user(username, password)
+        print(user)
+        db.session.add(user)
+        db.session.commit()
+        flash("Account created! Please log in.")
+
+    return render_template('login.html')
+        
+
 @app.route('/logout')
 def logout():
     session.pop('username', None)
@@ -30,8 +49,8 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/login", methods=["POST","GET"])
-def process_login():
+@app.route("/user_page", methods=["POST","GET"])
+def user_page():
     """Process user login."""
     sso = False
     username= request.form.get("uname")
@@ -42,8 +61,6 @@ def process_login():
     user = crud.get_user_by_username(username)
     url_info_list=urlinfo_list(user)
 
-    
-
     if not user or (not sso and user.password != password):
         flash("The email or password you entered was incorrect.")
         return redirect('/')
@@ -51,7 +68,7 @@ def process_login():
         # Log in user by storing the user's email in session
         session["username"] = user.username
         flash(f"Welcome back, {user.username}!")
-        return render_template('inputpage.html',url_info=url_info_list)
+        return render_template('userpage.html',url_info=url_info_list)
 
 # @app.route("/processinput", methods=["POST"])
 # def process_input():
@@ -99,7 +116,7 @@ def process_login():
 
 #     url_info_list=urlinfo_list(user)
     
-#     return render_template('inputpage.html', url_info=url_info_list)
+#     return render_template('userpage.html', url_info=url_info_list)
 
 
 @app.route("/processinput", methods=["POST"])
@@ -133,8 +150,13 @@ def process_input():
 
     db.session.commit()
 
-    similarity = 50
-    
+    similarity = compaire(result1,result2)
+    print("########################################################")
+    print("      ")
+    print(similarity)
+    print("       ")
+    print("###################################################################################")
+
     return render_template('result.html', input1=input1,input2=input2,similarity=similarity)
 
 # save button function
@@ -151,32 +173,10 @@ def update_table():
     user_input = crud.insert_userinput(user, urlinfo)
     db.session.add(user_input)
     db.session.commit()
-    print("#############################################")
     
+    return jsonify({'redirect':"user_page"})
 
-    return jsonify({'redirect':"login"})
-
-
-@app.route("/users", methods=["POST"])
-def register_user():
-    """Create a new user."""
-
-    username = request.form.get("username")
-    password = request.form.get("psw")
-    user = crud.get_user_by_username(username)
-    if user:
-        flash("Cannot create an account with that email. Try again.")
-    else:
-        user = crud.create_user(username, password)
-        print(user)
-        db.session.add(user)
-        db.session.commit()
-        flash("Account created! Please log in.")
-
-    return render_template('login.html')
-        
-
-        
+# delect button function
 @app.route("/delete",methods=["POST"])
 def delete():
     """delete a row"""
@@ -187,9 +187,9 @@ def delete():
     UrlInfo.query.filter_by(url_id=url_info_id).delete()
     db.session.commit()
     url_info_list = urlinfo_list(user)
-    return render_template('inputpage.html', url_info=url_info_list)
+    return render_template('userpage.html', url_info=url_info_list)
 
-
+# function to create urlinfo list
 def urlinfo_list(user):
     user_input = crud.get_user_input_by_user_id(user.user_id)
     url_info_list = []
