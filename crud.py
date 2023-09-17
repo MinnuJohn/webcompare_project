@@ -2,10 +2,10 @@
 
 from model import db, User,UrlInfo,UserInput,WebScrapedInfo,connect_to_db
 
-def create_user(username, password,user_id):
+def create_user(username, password):
     """Create and return a new user."""
 
-    user = User(username=username, password=password,user_id = user_id)
+    user = User(username=username, password=password)
 
     return user
 

@@ -1,7 +1,7 @@
 
-$(function() {
+$(function () {
 
-  $(".progress").each(function() {
+  $(".progress").each(function () {
 
     var value = $(this).attr('data-value');
     var left = $(this).find('.progress-left .progress-bar');
@@ -24,4 +24,25 @@ $(function() {
 
   }
 
+});
+
+$("#saveButton").click(function (e) {
+  $.ajax({
+    type: 'POST',
+    url: '/update',
+    contentType: 'application/json; charset=utf-8',
+    data: JSON.stringify({
+      url1: $('#url1').text(),
+      url2: $('#url2').text(),
+      similarity: $('#similarity').text()
+    }),
+    dataType: 'json',
+    success: function(response) {
+      console.log(response.redirect)
+      window.location.href = response.redirect
+    },
+    error: function (result) {
+      alert('error');
+    }
+  });
 });
