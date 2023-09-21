@@ -31,7 +31,8 @@ def register_user():
     password = request.form.get("psw")
     user = crud.get_user_by_username(username)
     if user:
-        flash("Cannot create an account with that email. Try again.")
+        flash("Cannot create an account with that username. Try again.")
+        return redirect(url_for("registerform"))
     else:
         user = crud.create_user(username, password)
         print(user)
@@ -59,7 +60,7 @@ def user_page():
         username = session.get("username")
         sso = True
     user = crud.get_user_by_username(username)
-    url_info_list=urlinfo_list(user)
+    
 
     if not user or (not sso and user.password != password):
         flash("The email or password you entered was incorrect.")
@@ -68,6 +69,7 @@ def user_page():
         # Log in user by storing the user's email in session
         session["username"] = user.username
         flash(f"Welcome back, {user.username}!")
+        url_info_list=urlinfo_list(user)
         return render_template('userpage.html',url_info=url_info_list)
 
 # @app.route("/processinput", methods=["POST"])
@@ -151,12 +153,7 @@ def process_input():
     db.session.commit()
 
     similarity = compaire(result1,result2)
-    print("########################################################")
-    print("      ")
-    print(similarity)
-    print("       ")
-    print("###################################################################################")
-
+    
     return render_template('result.html', input1=input1,input2=input2,similarity=similarity)
 
 # save button function
