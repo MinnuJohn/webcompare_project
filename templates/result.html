@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% block head%}
-<title>Result</title>
+<title>cosine similarity result</title>
 {% endblock%}
 
 {% block body %}
@@ -36,25 +36,22 @@
                 <!-- Demo info -->
                 <div class="row text-center mt-4">
                     <div class="col-6 border-right">
-                        <div class="h4 font-weight-bold mb-0" id="url1">{{input1 }}</div><span class="small text-gray">url1</span>
+                        <div class="h4 font-weight-bold mb-0" id="url1">{{input1 }}</div><span
+                            class="small text-gray">url1</span>
                     </div>
                     <div class="col-6">
-                        <div class="h4 font-weight-bold mb-0" id="url2">{{input2 }}</div><span class="small text-gray">url2</span>
+                        <div class="h4 font-weight-bold mb-0" id="url2">{{input2 }}</div><span
+                            class="small text-gray">url2</span>
                     </div>
                 </div>
                 <!-- END -->
             </div>
             <!-- Save Button Section -->
-        <div class="text-center mt-4">
-            <button action="/update" method="POST" id="saveButton" class="btn btn-primary">Save</button>
+            <div class="text-center mt-4">
+                <button action="/update" method="POST" id="saveButton" class="btn btn-primary">Save</button>
+            </div>
+            <!-- END Save Button Section -->
         </div>
-        <!-- END Save Button Section -->
-        </div>
-
-
-
-
-
     </div>
 </div>
 
