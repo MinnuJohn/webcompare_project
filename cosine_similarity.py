@@ -3,7 +3,7 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import string
-def compaire(X,Y):
+def compare(X,Y):
     # conver above strins to lower
     x = X.lower()
     y = Y.lower()

@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+
+{% block head%}
+<title>Compare text</title>
+
+{% endblock%}
+
+{% block body %}
+<link rel="stylesheet" href="/static/styles.css">
+<!-- Static navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+  <a id="ubermelon-logo" class="navbar-brand" href="#">Cosine similarity</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user_page">Url compare</a>
+      </li>
+
+    </ul>
+  </div>
+  <ul class="flash-messages">
+    <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
+  </ul>
+</nav>
+
+<div class="container py-5">
+  <div class="row">
+
+
+    <div class="text-center"> <!-- Center-align the content -->
+      <h1>Check similarity between two texts</h1>
+      <form id="comparison-form" method="POST">
+        <div class="text-input">
+          <label for="text">Enter text 1:</label>
+          <textarea id="text1" name="text1" placeholder="Paste or type your text here"></textarea>
+          
+        </div>
+        <div class="text-input">
+          <label for="text">Enter text 2:</label>
+          <textarea id="text2" name="text2" placeholder="Paste or type your text here"></textarea>
+        </div>
+
+        <button type="submit">Compare</button>
+          
+
+      </form>
+      <div id="result" ></div>
+
+    </div>
+  </div>
+  <script src="/static/js/text.js"></script>
+  
+  {% endblock %}

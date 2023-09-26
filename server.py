@@ -3,13 +3,17 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db, db,UserInput,UrlInfo
 import crud
 from webscraping import scrape
-from cosine_similarity import compaire 
+from cosine_similarity import compare 
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
+
+@app.route("/text")
+def textcompare():
+    return render_template('text_compare.html')
 
 @app.route("/result")
 def result():
@@ -71,54 +75,25 @@ def user_page():
         flash(f"Welcome back, {user.username}!")
         url_info_list=urlinfo_list(user)
         return render_template('userpage.html',url_info=url_info_list)
-
-# @app.route("/processinput", methods=["POST"])
-# def process_input():
-#     # Get urls
-#     input1 = request.form.get("url1")
-#     input2 = request.form.get("url2")
-
-#     # Check if URLs already exist in webscraped table
-#     existing_result1 = crud.get_webscraped_by_url(input1)
-#     existing_result2 = crud.get_webscraped_by_url(input2)
-
-#     if existing_result1:
-#         result1 = existing_result1.url_data
-#     else:
-#         # Scrape URL 1
-#         result1 = scrape(input1)
-#         # Insert URL 1 and its content into webscraped table
-#         webscraping1 = crud.insert_webscraping(input1, result1)
-#         db.session.add(webscraping1)
-
-
-#     if existing_result2:
-#         result2 = existing_result2.url_data
-#     else:
-#         # Scrape URL 2
-#         result2 = scrape(input2)
-#         # Insert URL 2 and its content into webscraped table
-#         webscraping2 = crud.insert_webscraping(input2, result2)
-#         db.session.add(webscraping2)
-
-#     db.session.commit()
-
-#     similarity = 10
     
+@app.route("/processtext",methods = ["POST"])
+def process_text():
+    # Get texts
+    text1 = request.json.get("text1")
+    text2 =request.json.get("text2")
 
-#     # Insert URL info and user input
-#     urlinfo = crud.insert_url_info(input1, input2, similarity)
-#     db.session.add(urlinfo)
+    # Calculate similarity
+    similar = compare(text1, text2)
+    print("##############################")
+    print(similar)
+    print("##############################")
 
-#     username = session.get("username")
-#     user = crud.get_user_by_username(username)
-#     user_input = crud.insert_userinput(user, urlinfo)
-#     db.session.add(user_input)
-#     db.session.commit()
+    # Render the template with the similarity score
+    return jsonify({"similar": similar})
 
-#     url_info_list=urlinfo_list(user)
-    
-#     return render_template('userpage.html', url_info=url_info_list)
+
+
+
 
 
 @app.route("/processinput", methods=["POST"])
@@ -152,7 +127,7 @@ def process_input():
 
     db.session.commit()
 
-    similarity = compaire(result1,result2)
+    similarity = compare(result1,result2)
     
     return render_template('result.html', input1=input1,input2=input2,similarity=similarity)
 
