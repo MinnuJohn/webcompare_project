@@ -23,13 +23,13 @@
       </li>
     </ul>
 
-   
+
 
 
   </div>
   <ul class="flash-messages">
-  <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
-</ul>
+    <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
+  </ul>
 </nav>
 
 <div class="text-center"> <!-- Center-align the content -->
@@ -47,38 +47,39 @@
 
     <input type="submit" value="Submit">
   </form>
-</div>
-<div class="center-table">
+  <!-- </div> -->
+  <div class="center-table">
 
-  <div class="table-responsive">
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>url1</th>
-          <th>url2</th>
-          <th>Similarity%</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for info in url_info %}
-        <tr>
-          <td>{{ info.url_input1 }}</td>
-          <td>{{ info.url_input2}}</td>
-          <td>{{ info.similarity }}</td>
-          <td>
-            <form action="/delete" method="POST">
-              <input type="hidden" name="url_id" value="{{ info.url_id }}">
-              <input type="submit" value="Delete">
-            </form>
-          </td>
+    <div class="table-responsive">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>url1</th>
+              <th>url2</th>
+              <th>Similarity%</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for info in url_info %}
+            <tr>
+              <td>{{ info.url_input1 }}</td>
+              <td>{{ info.url_input2}}</td>
+              <td>{{ info.similarity }}</td>
+              <td>
+                <form action="/delete" method="POST">
+                  <input type="hidden" name="url_id" value="{{ info.url_id }}">
+                  <input type="submit" value="Delete">
+                </form>
+              </td>
 
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
