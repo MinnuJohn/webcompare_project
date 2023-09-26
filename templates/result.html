@@ -18,7 +18,7 @@
             <div class="bg-white rounded-lg p-5 shadow">
                 <h2 class="h6 font-weight-bold text-center mb-4">Smililarity percentage</h2>
 
-                <!-- Progress bar 1 -->
+                <!-- Progress bar  -->
                 <div class="progress mx-auto" data-value='{{similarity}}'>
                     <span class="progress-left">
                         <span class="progress-bar border-primary"></span>
@@ -33,24 +33,29 @@
                 </div>
                 <!-- END -->
 
-                <!-- Demo info -->
+                <!-- display input links -->
                 <div class="row text-center mt-4">
                     <div class="col-6 border-right">
-                        <div class="h4 font-weight-bold mb-0" id="url1">{{input1 }}</div><span
-                            class="small text-gray">url1</span>
+                        <div class="h4 font-weight-bold mb-0" id="url1" style="overflow: hidden;
+                        ">{{input1 }}</div><span class="small text-gray">url1</span>
                     </div>
                     <div class="col-6">
-                        <div class="h4 font-weight-bold mb-0" id="url2">{{input2 }}</div><span
-                            class="small text-gray">url2</span>
+                        <div class="h4 font-weight-bold mb-0" id="url2" style="overflow: hidden;
+                        ">{{input2 }}</div><span class="small text-gray">url2</span>
                     </div>
                 </div>
                 <!-- END -->
+
+
             </div>
             <!-- Save Button Section -->
             <div class="text-center mt-4">
                 <button action="/update" method="POST" id="saveButton" class="btn btn-primary">Save</button>
+
+                <!-- END Save Button Section -->
+                <input type="button" value="Back to previous page" onclick="history.back()" class="btn btn-primary" />
             </div>
-            <!-- END Save Button Section -->
+
         </div>
     </div>
 </div>
