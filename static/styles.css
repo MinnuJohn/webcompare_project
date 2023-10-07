@@ -164,8 +164,8 @@ table {
   border-radius: 0px;
 }
 
-#ubermelon-logo,
-#ubermelon-logo:hover,
+#cosin_logo,
+#cosin_logo:hover,
 .navbar-dark .navbar-brand {
   color: #151515;
 }
@@ -190,16 +190,6 @@ section {
   font-size: 18px;
 }
 
-/* Features Row */
-
-/* .feature {
-  text-align: center;
-}
-
-
-#modalLabel {
-  color: black;
-} */
 
 .text-input-group {
   display: inline-block;

@@ -74,13 +74,28 @@
   top: 0;
   left: 0;
 }
+.navbar {
+  background-color: #a7aa04;
+  color: white;
+  border-radius: 0px;
+}
 
+#cosin_logo,
+#cosin_logo:hover,
+.navbar-dark .navbar-brand {
+  color: #151515;
+}
+
+.navbar-nav > li > a,
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
 
 
 body {
-  background: #ff7e5f;
+  background: #07b821;
   background: -webkit-linear-gradient(to right, #fffa5f, #fed97b);
-  background: linear-gradient(to right, #ffc45f, #e8fe7b);
+  background: linear-gradient(to right, #c2ff5f, #9cad47);
   min-height: 100vh;
 }
 

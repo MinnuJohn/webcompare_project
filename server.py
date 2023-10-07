@@ -15,6 +15,10 @@ app.jinja_env.undefined = StrictUndefined
 def textcompare():
     return render_template('text_compare.html')
 
+@app.route("/about")
+def about():
+    return render_template('about.html')
+
 @app.route("/result")
 def result():
     return render_template('result.html')

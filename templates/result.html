@@ -5,6 +5,29 @@
 
 {% block body %}
 <link rel="stylesheet" href="/static/style.css">
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+    <a id="cosin_logo" class="navbar-brand" href="#">Cosine similarity</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/user_page">Url compare</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/text">Text compare</a>
+          </li>
+  
+      </ul>
+    </div>
+    <ul class="flash-messages">
+      <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
+    </ul>
+  </nav>
 <div class="container py-5">
     <div class="row">
 
