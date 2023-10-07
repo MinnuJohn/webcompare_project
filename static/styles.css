@@ -1,4 +1,10 @@
 /* Bordered form */
+body {
+  background: #07b821;
+  background: -webkit-linear-gradient(to right, #e8e5a0, #dec483);
+  background: linear-gradient(to right, #fffc5f, #d0d1cb);
+  min-height: 100vh;
+}
 form {
     border: 3px solid  #a7aa04;
   }
@@ -125,11 +131,12 @@ table, th, td {
   border-collapse: collapse;
 }
 th, td {
-  background-color:  #a7aa04;
+  background-color:  #d0d332;
 }
 
 
 table {
+  
   width: 100%; /* Make the table span the full width of its container */
   border-collapse: separate; /* Add cell spacing */
   border-spacing: 10px; /* Adjust the cell spacing as needed */
@@ -205,5 +212,17 @@ section {
   height: 200px; /* Adjust the height as needed */
 }
 
+
+
+h1 {
+  font-size: 36px; /* Font size for the page title */
+  margin-top: 20px; /* Add some top margin to the title */
+}
+
+/* Style the paragraph text */
+p {
+  font-size: 16px; /* Font size for paragraph text */
+  line-height: 1.5; /* Line height for better readability */
+}
 
 

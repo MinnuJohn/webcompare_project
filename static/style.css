@@ -94,8 +94,8 @@
 
 body {
   background: #07b821;
-  background: -webkit-linear-gradient(to right, #fffa5f, #fed97b);
-  background: linear-gradient(to right, #c2ff5f, #9cad47);
+  background: -webkit-linear-gradient(to right, #e8e5a0, #dec483);
+  background: linear-gradient(to right, #fffc5f, #d0d1cb);
   min-height: 100vh;
 }
 
