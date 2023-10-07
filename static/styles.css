@@ -5,9 +5,9 @@ body {
   background: linear-gradient(to right, #fffc5f, #d0d1cb);
   min-height: 100vh;
 }
-form {
+/* form {
     border: 3px solid  #a7aa04;
-  }
+  } */
   
   /* Full-width inputs */
   input[type=text], input[type=password] {
@@ -36,10 +36,10 @@ form {
   }
   
   
-  /* Add padding to containers */
-  /* .container {
+  Add padding to containers */
+  .container {
     padding: 16px;
-  } */
+  }
   
   
   

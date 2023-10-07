@@ -29,20 +29,32 @@
 <form action="/user_page" method="POST">
     
   
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-  
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+  <div class="container">
+    <div class="card mx-auto mt-5" style="max-width: 400px;">
+        <div class="card-header">
+            <h2 class="text-center">Login</h2>
+        </div>
+        <div class="card-body">
+            <form action="/user_page" method="POST">
+                <div class="mb-3">
+                    <label for="uname" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter Username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="psw" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="psw" name="psw" placeholder="Enter Password" required>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember" name="remember" checked>
+                    <label class="form-check-label" for="remember">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <p>If you don't have an account, <a href="{{ url_for('registerform') }}">sign up for free here</a></p>
+        </div>
     </div>
-  </form>
-  
-  <a href="{{url_for('registerform')}}">If do not have account,signup for free here</a><br>
+</div>
  
 {% endblock %}
