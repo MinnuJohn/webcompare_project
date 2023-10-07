@@ -84,15 +84,9 @@ def process_text():
 
     # Calculate similarity
     similar = compare(text1, text2)
-    print("##############################")
-    print(similar)
-    print("##############################")
-
+    
     # Render the template with the similarity score
     return jsonify({"similar": similar})
-
-
-
 
 
 
@@ -168,10 +162,6 @@ def urlinfo_list(user):
     for i in user_input:
         url_info_list.append(i.url_info)
     return url_info_list
-
-
-
-
 
 
 if __name__ == "__main__":

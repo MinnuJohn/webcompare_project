@@ -33,8 +33,7 @@
     // Retrieve values from the input fields
     const text1 = document.querySelector('#text1').value;
     const text2 = document.querySelector('#text2').value;
-    console.log("#############################")
-    console.log(text1)
+    
     // Send a POST request to the server to compare similarity
     fetch('/processtext', {
       method: 'POST',
