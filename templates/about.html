@@ -1,31 +1,38 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block head%}
-<title>About Cosine similarity</title>
-
-{% endblock%}
+{% block head %}
+    <title>About Cosine Similarity</title>
+{% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="/static/styles.css">
-<!-- Static navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark">
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a id="cosin_logo" class="navbar-brand" href="#">
+            <img src="/static/image/logo.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top"> Cosine similarity
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <a id="cosin_logo" class="navbar-brand" href="#"><img src ="/static/image/logo.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top"> Cosine similarity</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a> </li>
-
-    </ul>
-  </div>
-</nav>
-<h1>What is cosine similarity?</h1>
-<p>Cosine similarity measures the similarity between two vectors of an inner product space. It is measured by the cosine of the angle between two vectors and determines whether two vectors are pointing in roughly the same direction. It is often used to measure document similarity in text analysis.</p>
-<img src= "/static/image/cos_sim.png" alt="cartoon pic represent cosin similarity">
-  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>What is Cosine Similarity?</h1>
+    <p>
+      <br>
+        Cosine similarity measures the similarity between two vectors of an inner product space.
+        It is measured by the cosine of the angle between two vectors and determines whether two vectors are pointing
+        in roughly the same direction.
+        It is often used to measure document similarity in text analysis.
+    </p>
+    <div class="text-center d-flex">
+        <img src="/static/image/cos_sim.png" alt="Cartoon pic representing Cosine Similarity">
+    </div>
 {% endblock %}
