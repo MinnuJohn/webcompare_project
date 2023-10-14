@@ -30,6 +30,8 @@ Registered users can log in using their username and password to access the appl
 ## Getting Started
 
 1. Clone the repository to your local machine.
+   ```
+   git clone https://github.com/yourusername/webcompare_project.git
    
 2. Install the required dependencies.
    ```
@@ -38,7 +40,7 @@ Registered users can log in using their username and password to access the appl
 
 3. Run the application.
    ```
-   python app.py
+   python server.py
    ```
 
 4. Access the application in your web browser at `http://localhost:5000`.
